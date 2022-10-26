@@ -8,7 +8,7 @@ public class Main {
         building.move("id2","Up");
         building.move("id3","Up");
         building.stopAt("id3",7);
-        String idoffe= building.requestElevator();
+        String idoffe= building.requestElevator( 7);
         System.out.println(idoffe);
     }
 }

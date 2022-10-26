@@ -24,17 +24,19 @@ public class Building {
 
     //set the state of an Elavator to Up or Down
     public void move( String idElevator , String stateClassName) throws Exception {
-//        StateElevator oState=  (StateElevator) Class.forName(stateClassName).newInstance();
-//        elevators.get(idElevator).setStateElevator( oState );
-            if (stateClassName=="Up"){
-                elevators.get(idElevator).setStateElevator( new Up() );
-                //System.out.println("up-----");
-            }
+        StateElevator oState=  (StateElevator) Class.forName("com.company."+stateClassName).newInstance();
+        elevators.get(idElevator).setStateElevator( oState );
 
-            if (stateClassName=="Down"){
-                elevators.get(idElevator).setStateElevator( new Down() );
-                //System.out.println("down-----");
-            }
+
+//            if (stateClassName=="Up"){
+//                elevators.get(idElevator).setStateElevator( new Up() );
+//                //System.out.println("up-----");
+//            }
+//
+//            if (stateClassName=="Down"){
+//                elevators.get(idElevator).setStateElevator( new Down() );
+//                //System.out.println("down-----");
+//            }
 
     }
 
