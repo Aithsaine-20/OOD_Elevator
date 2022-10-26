@@ -7,8 +7,8 @@ import static java.lang.Integer.parseInt;
 
 public class Building {
     private int numberOfFloors;
-    private HashMap<String,Elevator> elevators=new HashMap<>() ;
-    private ElavatorFactory elavatorFactory;
+    private HashMap<String,Elevator> elevators=new HashMap<>();
+    private ElavatorFactory elavatorFactory= new ElavatorFactory();
     private Dispatcher dispatcher=new Dispatcher();
 
     // Constructor of the building class
@@ -16,13 +16,8 @@ public class Building {
         // loop through the Strings giving ("id2:4") and extract id and level of all elevators in the building
         for (String id_level:elevators) {
             String[] str = id_level.split(":");
-            System.out.println(str[1]);
-            System.out.println(str[0]);
-            //
-            Elevator elevator = new Elevator(parseInt(str[1])); /*elavatorFactory.createElevator(parseInt(str[1]));*/
-
+            Elevator elevator = elavatorFactory.createElevator(parseInt(str[1]));
             this.elevators.put(str[0],elevator);
-            this.elevators.get(str[0]).setStateElevator(new Rest());
         }
         this.numberOfFloors=numberOfFloors;
     }
@@ -33,11 +28,13 @@ public class Building {
 //        elevators.get(idElevator).setStateElevator( oState );
             if (stateClassName=="Up"){
                 elevators.get(idElevator).setStateElevator( new Up() );
-                System.out.println("up-----");}
+                //System.out.println("up-----");
+            }
 
             if (stateClassName=="Down"){
                 elevators.get(idElevator).setStateElevator( new Down() );
-                System.out.println("down-----");}
+                //System.out.println("down-----");
+            }
 
     }
 
